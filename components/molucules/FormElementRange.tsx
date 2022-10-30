@@ -4,13 +4,23 @@ import InputRange from "../atoms/InputRange";
 
 interface FormElementRangeProps {
   label: string;
+  sliderValue: number;
+  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const FormElementRange = ({ label }: FormElementRangeProps) => {
+const FormElementRange = ({
+  label,
+  sliderValue,
+  setSliderValue,
+}: FormElementRangeProps) => {
   return (
     <div className="flex items-center">
       <Label label={label} />
-      <InputRange value={1} id={label} />
+      <InputRange
+        sliderValue={sliderValue}
+        setSliderValue={setSliderValue}
+        id={label}
+      />
     </div>
   );
 };

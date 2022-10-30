@@ -1,8 +1,12 @@
 import Head from "next/head";
 import Header from "../components/template/Header";
 import MainContainer from "../components/template/MainContainer";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [sliderValue, setSliderValue] = useState(1);
+  const [toDateValue, setToDateValue] = useState("2021-01-01");
+  const [fromDateValue, setFromDateValue] = useState("2015-01-01");
   return (
     <div>
       <Head>
@@ -11,8 +15,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="p-4">
-        <Header />
-        <MainContainer />
+        <Header
+          sliderValue={sliderValue}
+          setSliderValue={setSliderValue}
+          toDateValue={toDateValue}
+          setToDateValue={setToDateValue}
+          fromDateValue={fromDateValue}
+          setFromDateValue={setFromDateValue}
+        />
+        <MainContainer
+          sliderValue={sliderValue}
+          toDateValue={toDateValue}
+          fromDateValue={fromDateValue}
+        />
       </main>
     </div>
   );

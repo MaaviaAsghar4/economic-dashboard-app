@@ -2,7 +2,7 @@ import React from "react";
 
 interface StatsContainerProps {
   statsTitle: string;
-  stats: number;
+  stats: string;
 }
 
 const StatsContainer = ({ statsTitle, stats }: StatsContainerProps) => {

@@ -3,11 +3,15 @@ export const fetchData = async (
   dateTo = "2021-01-01",
   dateFrom = "2015-01-01"
 ) => {
-  const request = await fetch(
-    `https://www.econdb.com/api/series/${seriesCode}/?from=${dateFrom}&to=${dateTo}&format=json`
-  );
+  try {
+    const request = await fetch(
+      `https://www.econdb.com/api/series/${seriesCode}/?from=${dateFrom}&to=${dateTo}&format=json`
+    );
 
-  const response = await request.json();
+    const response = await request.json();
 
-  return response;
+    return response;
+  } catch (error) {
+    return null;
+  }
 };
