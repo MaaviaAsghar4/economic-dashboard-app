@@ -10,7 +10,7 @@ const InputDate = ({ dateValue, setDateValue, id }: InputDateProps) => {
   return (
     <input
       id={id.toLowerCase()}
-      type="Date"
+      type="month"
       className="text-sm border-black border px-2 rounded"
       value={dateValue}
       onChange={(e) => setDateValue(e.target.value)}

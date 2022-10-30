@@ -68,7 +68,11 @@ const MainContainer = ({
 
   const getCPIUSData = async () => {
     try {
-      const result = await fetchData("CPIUS", toDateValue, fromDateValue);
+      const result = await fetchData(
+        "CPIUS",
+        `${toDateValue}-01`,
+        `${fromDateValue}-01`
+      );
       // return if data is not available
       if (!result && !result?.data && result?.data?.dates.length) {
         setCPIUSData([]);
@@ -90,7 +94,11 @@ const MainContainer = ({
 
   const getCONFUSData = async () => {
     try {
-      const result = await fetchData("CONFUS", toDateValue, fromDateValue);
+      const result = await fetchData(
+        "CONFUS",
+        `${toDateValue}-01`,
+        `${fromDateValue}-01`
+      );
 
       // return if data is not available
       if (!result && !result?.data && result?.data?.dates.length) {
@@ -113,7 +121,11 @@ const MainContainer = ({
 
   const getRETAUSData = async () => {
     try {
-      const result = await fetchData("RETAUS", toDateValue, fromDateValue);
+      const result = await fetchData(
+        "RETAUS",
+        `${toDateValue}-01`,
+        `${fromDateValue}-01`
+      );
       // return if data is not available
       if (!result && !result?.data && result?.data?.dates.length) {
         setRETAUSData([]);
@@ -135,7 +147,11 @@ const MainContainer = ({
 
   const getSENTUSData = async () => {
     try {
-      const result = await fetchData("SENTUS", toDateValue, fromDateValue);
+      const result = await fetchData(
+        "SENTUS",
+        `${toDateValue}-01`,
+        `${fromDateValue}-01`
+      );
       // return if data is not available
       if (!result && !result?.data && result?.data?.dates.length) {
         setSENTUSData(0);
@@ -159,7 +175,11 @@ const MainContainer = ({
 
   const getPOPUSData = async () => {
     try {
-      const result = await fetchData("POPUS", toDateValue, fromDateValue);
+      const result = await fetchData(
+        "POPUS",
+        `${toDateValue}-01`,
+        `${fromDateValue}-01`
+      );
       // return if data is not available
       if (!result && !result?.data && result?.data?.dates.length) {
         setPOPUSData(0);
@@ -183,7 +203,7 @@ const MainContainer = ({
   };
 
   return (
-    <div className="grid grid-cols-2 pt-3 w-full pb-5 px-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 pt-3 w-full pb-5 px-3 gap-8">
       <ChartContainer chartTitle="CPIUS - United States - Consumer Price Index">
         <LinearChart data={CPIUSData} />
       </ChartContainer>

@@ -21,7 +21,7 @@ const Header = ({
   setFromDateValue,
 }: HeaderProps) => {
   return (
-    <div className="flex justify-between items-center pt-3 pb-5 px-3 border-b-2 border-black">
+    <div className="flex md:justify-between md:flex-row gap-4 md:gap-0 flex-col items-center pt-3 pb-5 px-3 border-b-2 border-black">
       <Title title="Economic Dashboard" />
       <FormElementDate
         dateValue={fromDateValue}

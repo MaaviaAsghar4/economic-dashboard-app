@@ -5,8 +5,8 @@ import React, { useState } from "react";
 
 export default function Home() {
   const [sliderValue, setSliderValue] = useState(1);
-  const [toDateValue, setToDateValue] = useState("2021-01-01");
-  const [fromDateValue, setFromDateValue] = useState("2015-01-01");
+  const [toDateValue, setToDateValue] = useState("2021-01");
+  const [fromDateValue, setFromDateValue] = useState("2015-01");
   return (
     <div>
       <Head>
