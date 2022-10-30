@@ -134,8 +134,27 @@ const MainContainer = ({
   };
 
   const getSENTUSData = async () => {
-    const result = await fetchData("SENTUS", toDateValue, fromDateValue);
-    console.log("SENTUS", result);
+    try {
+      const result = await fetchData("SENTUS", toDateValue, fromDateValue);
+      // return if data is not available
+      if (!result && !result?.data && result?.data?.dates.length) {
+        setSENTUSData(0);
+        return;
+      }
+
+      const sentusValues = result.data.values;
+      const sentusAtBeginning = sentusValues[0];
+      const sentusAtEnd = sentusValues.at(-1);
+      const sentusGrowthRate =
+        ((sentusAtEnd - sentusAtBeginning) / sentusAtBeginning) * 100;
+      if (isNaN(sentusGrowthRate)) {
+        setSENTUSData(0);
+        return;
+      }
+      setSENTUSData(sentusGrowthRate);
+    } catch (error) {
+      setSENTUSData(0);
+    }
   };
 
   const getPOPUSData = async () => {
@@ -153,6 +172,10 @@ const MainContainer = ({
       const populationGrowthRate =
         ((populationAtEnd - populationAtBeginning) / populationAtBeginning) *
         100;
+      if (isNaN(populationGrowthRate)) {
+        setPOPUSData(0);
+        return;
+      }
       setPOPUSData(populationGrowthRate);
     } catch (error) {
       setPOPUSData(0);
@@ -174,7 +197,7 @@ const MainContainer = ({
         <div className="w-3/4 mx-auto mt-6 p-4 h-full flex justify-evenly flex-col border border-black">
           <StatsContainer
             statsTitle="Average US Sentiment Index (SENTUS)"
-            stats={`1223`}
+            stats={`${SENTUSData.toFixed(2)}%`}
           />
           <StatsContainer
             statsTitle="Population growth during selected period (POPUS)"
