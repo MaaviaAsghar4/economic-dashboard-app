@@ -4,6 +4,7 @@ import SimpleBarChart from "../atoms/BarChart";
 import ChartContainer from "../molucules/ChartContainer";
 import StatsContainer from "../molucules/StatsContainer";
 import { fetchData } from "../../services/HttpService";
+import { LineChartData, BarChartData } from "../../types";
 
 interface MainContainerProps {
   sliderValue: number;
@@ -11,20 +12,14 @@ interface MainContainerProps {
   fromDateValue: string;
 }
 
-interface ChartData {
-  date: string;
-  original: number;
-  scaled: number;
-}
-
 const MainContainer = ({
   sliderValue,
   toDateValue,
   fromDateValue,
 }: MainContainerProps) => {
-  const [CPIUSData, setCPIUSData] = useState<ChartData[] | []>([]);
-  const [CONFUSData, setCONFUSData] = useState<ChartData[] | []>([]);
-  const [RETAUSData, setRETAUSData] = useState<ChartData[] | []>([]);
+  const [CPIUSData, setCPIUSData] = useState<LineChartData[] | []>([]);
+  const [CONFUSData, setCONFUSData] = useState<LineChartData[] | []>([]);
+  const [RETAUSData, setRETAUSData] = useState<BarChartData[] | []>([]);
   const [SENTUSData, setSENTUSData] = useState(0);
   const [POPUSData, setPOPUSData] = useState(0);
 
@@ -41,7 +36,7 @@ const MainContainer = ({
       let _prevState = JSON.parse(JSON.stringify(prevState));
       // return if data is not available
       if (!_prevState.length) return [];
-      let data = _prevState.map((values: ChartData) => {
+      let data = _prevState.map((values: LineChartData) => {
         return {
           ...values,
           scaled: values.original * sliderValue,
@@ -55,7 +50,7 @@ const MainContainer = ({
       let _prevState = JSON.parse(JSON.stringify(prevState));
       // return if data is not available
       if (!_prevState.length) return [];
-      let data = _prevState.map((values: ChartData) => {
+      let data = _prevState.map((values: LineChartData) => {
         return {
           ...values,
           scaled: values.original * sliderValue,
@@ -134,8 +129,7 @@ const MainContainer = ({
       const data = result.data.dates.map((value: string, index: number) => {
         return {
           date: value,
-          original: result.data.values[index],
-          scaled: result.data.values[index] * sliderValue,
+          ["RETAUS"]: result.data.values[index],
         };
       });
 

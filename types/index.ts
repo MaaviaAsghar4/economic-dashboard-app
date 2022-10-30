@@ -3,3 +3,8 @@ export interface LineChartData {
   original: number;
   scaled: number;
 }
+
+export interface BarChartData {
+  date: string;
+  RETAUS: number;
+}

@@ -8,12 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-interface LineChartData {
-  date: string;
-  original: number;
-  scaled: number;
-}
+import { LineChartData } from "../../types";
 
 interface LinearChatProps {
   data: LineChartData[] | [];

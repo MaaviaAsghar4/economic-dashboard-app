@@ -8,12 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-interface BarChartData {
-  date: string;
-  original: number;
-  scaled: number;
-}
+import { BarChartData } from "../../types";
 
 interface BararChatProps {
   data: BarChartData[] | [];
@@ -27,7 +22,7 @@ const SimpleBarChart = ({ data }: BararChatProps) => {
         <YAxis tick={{ fontSize: 10 }} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="original" fill="#8884d8" />
+        <Bar dataKey="RETAUS" fill="#8884d8" />
       </BarChart>
     </ResponsiveContainer>
   );
