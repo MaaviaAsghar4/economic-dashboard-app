@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Header from "../components/template/Header";
-import LinearChart from "../components/atoms/LineChart";
-import SimpleBarChart from "../components/atoms/BarChart";
+import MainContainer from "../components/template/MainContainer";
 
 export default function Home() {
   return (
@@ -13,46 +12,7 @@ export default function Home() {
       </Head>
       <main className="p-4">
         <Header />
-        <div className="grid grid-cols-2 pt-3 w-full pb-5 px-3 gap-8">
-          <div className="w-full mb-10" style={{ height: 300 }}>
-            <div className="h-full w-5/6 mt-6">
-              <h4 className="text-xs text-center mb-3">
-                CPIUS - United States - Consumer Price Index
-              </h4>
-              <LinearChart />
-            </div>
-          </div>
-          <div className="w-full mb-10" style={{ height: 300 }}>
-            <div className="h-full w-5/6 mt-6">
-              <h4 className="text-xs text-center mb-3">
-                CONFUS - United States - Consumner Confidence Index
-              </h4>
-              <LinearChart />
-            </div>
-          </div>
-          <div className="w-full mb-10" style={{ height: 300 }}>
-            <div className="h-full w-5/6 mt-6">
-              <h4 className="text-xs text-center mb-3">
-                RETAUS - United States - Retail Trade
-              </h4>
-              <SimpleBarChart />
-            </div>
-          </div>
-          <div className="w-full mb-10" style={{ height: 300 }}>
-            <div className="w-3/4 mx-auto mt-6 p-4 h-full flex justify-evenly flex-col border border-black">
-              <div>
-                <p className="text-xs">Average US Sentiment Index (SENTUS)</p>
-                <h4 className="text-base font-medium">1243</h4>
-              </div>
-              <div>
-                <p className="text-xs">
-                  Population growth during selected period (POPUS)
-                </p>
-                <h4 className="text-base font-medium">1243</h4>
-              </div>
-            </div>
-          </div>
-        </div>
+        <MainContainer />
       </main>
     </div>
   );
