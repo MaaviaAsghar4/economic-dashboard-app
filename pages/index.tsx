@@ -1,12 +1,24 @@
 import Head from "next/head";
 import Header from "../components/template/Header";
 import MainContainer from "../components/template/MainContainer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
   const [sliderValue, setSliderValue] = useState(1);
   const [toDateValue, setToDateValue] = useState("2021-01");
   const [fromDateValue, setFromDateValue] = useState("2015-01");
+  const [invalidInterval, setInvalidInterval] = useState(false);
+
+  useEffect(() => {
+    let fromDateTimestamp = new Date(fromDateValue).getTime();
+    let toDateTimestamp = new Date(toDateValue).getTime();
+    if (fromDateTimestamp > toDateTimestamp) {
+      setInvalidInterval(true);
+    } else {
+      setInvalidInterval(false);
+    }
+  }, [fromDateValue, toDateValue]);
+
   return (
     <div>
       <Head>
@@ -23,6 +35,13 @@ export default function Home() {
           fromDateValue={fromDateValue}
           setFromDateValue={setFromDateValue}
         />
+        {invalidInterval ? (
+          <h3 className="text-center mt-2 text-red-600 font-medium">
+            Selected interval is invalid
+          </h3>
+        ) : (
+          <></>
+        )}
         <MainContainer
           sliderValue={sliderValue}
           toDateValue={toDateValue}
