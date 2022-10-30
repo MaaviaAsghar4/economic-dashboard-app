@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "../components/template/Header";
 
 export default function Home() {
   return (
@@ -9,48 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="p-4">
-        <div className="flex justify-between items-center p-3 border-b-2 border-black">
-          <h1 className="text-xl font-medium">Economic Dashboard</h1>
-          <div className="flex items-center">
-            <label
-              htmlFor="from"
-              className="block text-sm text-gray-900 dark:text-gray-300"
-            >
-              From
-            </label>
-            <input id="from" type="Date" />
-          </div>
-          <div className="flex items-center">
-            <label
-              htmlFor="to"
-              className="block text-sm text-gray-900 dark:text-gray-300"
-            >
-              To
-            </label>
-            <input id="to" type="Date" />
-          </div>
-          <div className="flex items-center">
-            <label
-              htmlFor="scale"
-              className="block text-sm text-gray-900 dark:text-gray-300"
-            >
-              Scale
-            </label>
-            <div className="flex items-center">
-              <p>1</p>
-              <input
-                id="scale"
-                type="range"
-                max="1"
-                min="0"
-                step="0.1"
-                // value="0.1"
-                className="h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-              />
-              <p>2</p>
-            </div>
-          </div>
-        </div>
+        <Header />
       </main>
     </div>
   );
